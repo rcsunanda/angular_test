@@ -7,7 +7,7 @@ import {CoursesService} from './courses.service';
    providers: [CoursesService],
 })
 export class CoursesComponent {
-   title = "Courses System"
+   title = "Courses List"
    courses: string[];
 
    constructor(cs: CoursesService) {

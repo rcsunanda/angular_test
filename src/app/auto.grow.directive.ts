@@ -21,6 +21,6 @@ export class AutoGrowDirective {
    }
 
    onBlur() {
-      this.renderer.setElementStyle(this.el.nativeElement, 'width', '100px');
+      this.renderer.setElementStyle(this.el.nativeElement, 'width', '175px');
    }
 }

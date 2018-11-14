@@ -1,6 +1,6 @@
 <h2>{{ title }}</h2>
 
-<input type="text" autoGrow />
+<input #authorBox type="text" autoGrow /> <button (click)="onAuthorAddClick(authorBox.value)">Add Author</button>
 
 <ul>
    <li *ngFor="let author of authors">{{ author }}</li>

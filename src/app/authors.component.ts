@@ -16,7 +16,7 @@ export class AuthorsComponent {
 
    constructor(as: AuthorsService, bs: BearsService) {
       this.authors = as.getAuthors();
-      this.bears = [];
+      
       this.bearsService = bs;
    }
 
@@ -27,14 +27,21 @@ export class AuthorsComponent {
 
    onGetBears() {
       console.log('onGetBears');
-      this.bearsService.getBears().subscribe((bears) => {
-         console.log(bears)
-
-         for (var key in bears) {
-            let str = JSON.stringify(bears[key]);
+      this.bearsService.getBears().subscribe((bears_resp) => {
+         console.log(bears_resp)
+         this.bears = [];
+         for (var key in bears_resp) {
+            let str = JSON.stringify(bears_resp[key]);
             this.bears.push(str);
             // console.log("key=" + key + ", val=" + str);
           }
+      });
+   }
+
+   onCreateBear(bearName) {
+      console.log('onCreateBear');
+      this.bearsService.createBear(bearName).subscribe((create_bear_resp) => {
+         console.log(create_bear_resp);
       });
    }
 }

@@ -3,6 +3,14 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { HttpHeaders } from '@angular/common/http';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Authorization': 'my-auth-token'
+  })
+};
 
 export class AuthorsService {
    getAuthors(): string[] {
@@ -10,10 +18,10 @@ export class AuthorsService {
    } 
 }
 
-export interface Bear {
-   id: string;
-   name: string;
- }
+// export interface Bear {
+//    id: string;
+//    name: string;
+//  }
 
 @Injectable()
 export class BearsService {
@@ -37,5 +45,16 @@ export class BearsService {
        );
       // console.log(resp);
       return resp;
+   }
+
+   createBear(name) {
+      console.log("Bear created. name=" + name);
+
+      let data = { 'name': name };
+
+      return this.http.post(this.get_bears_url, data, httpOptions)
+      .pipe(
+         catchError(this.handleError)
+      );
    }
 }

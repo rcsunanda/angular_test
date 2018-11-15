@@ -7,5 +7,8 @@
 </ul>
 
 <h3>Access to Bears Npode.js backend</h3>
+
 <button (click)="onGetBears()">Get Bears</button>
 <p *ngFor="let bear of bears">{{ bear }}</p>
+<br>
+Bear name: <input #bearNameBox type="text"/> <button (click)="onCreateBear(bearNameBox.value)">Add Bear</button>

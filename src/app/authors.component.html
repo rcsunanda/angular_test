@@ -5,3 +5,7 @@
 <ul>
    <li *ngFor="let author of authors">{{ author }}</li>
 </ul>
+
+<h3>Access to Bears Npode.js backend</h3>
+<button (click)="onGetBears()">Get Bears</button>
+<p *ngFor="let bear of bears">{{ bear }}</p>

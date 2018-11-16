@@ -27,7 +27,6 @@ export class AuthorsService {
 export class BearsService {
    constructor(private http: HttpClient) { }
 
-   base_url = 'http://localhost:4200/'
    get_bears_url = 'api/bears'
 
    private handleError(error: HttpErrorResponse) {
@@ -39,7 +38,7 @@ export class BearsService {
 
    getBears()/*: Observable<Bear>*/ {
       // let resp = this.http.get<Bear>(this.base_url + this.get_bears_url);
-      let resp = this.http.get(this.base_url + this.get_bears_url)
+      let resp = this.http.get(this.get_bears_url)
       .pipe(
          catchError(this.handleError)
        );
@@ -48,7 +47,7 @@ export class BearsService {
    }
 
    createBear(name) {
-      console.log("Bear created. name=" + name);
+      console.log("Sending create request. name=" + name);
 
       let data = { 'name': name };
 
